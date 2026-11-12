@@ -1,3 +1,8 @@
+![](https://raw.githubusercontent.com/mm5200935/tala-ba-ma/refs/heads/main/image1.JPG)
+![](https://raw.githubusercontent.com/mm5200935/tala-ba-ma/refs/heads/main/image2.JPG)
+![](https://raw.githubusercontent.com/mm5200935/tala-ba-ma/refs/heads/main/image3.JPG)
+
+
 # ✨ طلا با ما | Tala Ba Ma
 
 ### پلتفرم خرید و فروش آنلاین طلای ۱۸ عیار
@@ -5,7 +10,7 @@
 **طلا با ما** یک رابط کاربری مدرن و جذاب برای پلتفرم خرید و فروش آنلاین طلای ۱۸ عیار است که با هدف ارائه تجربه‌ای ساده، سریع و امن در معاملات آنلاین طلا طراحی شده است.
 
 این پروژه با استفاده از HTML5، CSS3 و JavaScript پیاده‌سازی شده و دارای طراحی واکنش‌گرا (Responsive) برای نمایش صحیح در موبایل، تبلت و دسکتاپ است.
-
+ساخته شده برای دوره آموزشی هوش مصنوعی کدینگ یار
 ---
 
 ## 🚀 ویژگی‌های پروژه
