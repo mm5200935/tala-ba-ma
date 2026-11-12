@@ -1,0 +1,2638 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>طلا با ما | خرید و فروش آنلاین طلای ۱۸ عیار</title>
+  <meta name="description" content="طلا با ما؛ پلتفرم آنلاین خرید و فروش طلای ۱۸ عیار. قیمت لحظه‌ای، خرید گرمی طلا و فروش آسان سرمایه، به‌صورت شبانه‌روزی." />
+  <meta name="keywords" content="خرید طلا, فروش طلا, طلای ۱۸ عیار, قیمت لحظه‌ای طلا, سرمایه‌گذاری طلا, طلا با ما" />
+  <meta property="og:title" content="طلا با ما | خرید و فروش آنلاین طلای ۱۸ عیار" />
+  <meta property="og:description" content="به‌سادگی طلای ۱۸ عیار بخر و بفروش. قیمت لحظه‌ای، شفاف و امن." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0B0B0D" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4AF37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='8' cy='8' r='6'/%3E%3Ccircle cx='15' cy='15' r='6'/%3E%3C/svg%3E" />
+
+  <!-- ===== Fonts: Sahel (headings) + Vazirmatn (body) ===== -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" />
+
+  <!-- ===== Lucide Icons (professional icon set) ===== -->
+  <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js" defer></script>
+
+  <!-- ===== Chart.js ===== -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+
+  <style>
+    /* ============================================================
+       1. Design Tokens & Reset
+       ============================================================ */
+    :root{
+      --black-deep:#0B0B0D;
+      --black-soft:#151515;
+      --gold:#D4AF37;
+      --gold-light:#F5D76E;
+      --gold-dark:#A67C00;
+      --white-warm:#FAF8F0;
+      --green:#22C55E;
+      --red:#EF4444;
+      --text-main:rgba(250,248,240,.92);
+      --text-muted:rgba(250,248,240,.62);
+      --text-faint:rgba(250,248,240,.42);
+      --line:rgba(212,175,55,.16);
+      --glass:rgba(255,255,255,.04);
+      --glass-strong:rgba(255,255,255,.07);
+      --radius-lg:22px;
+      --radius-md:16px;
+      --radius-sm:12px;
+      --shadow-soft:0 20px 60px rgba(0,0,0,.45);
+      --shadow-gold:0 10px 40px rgba(212,175,55,.18);
+      --font-head:'Sahel', 'Vazirmatn', system-ui, sans-serif;
+      --font-body:'Vazirmatn', 'Sahel', system-ui, sans-serif;
+      --header-h:76px;
+    }
+
+    *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+
+    html{
+      scroll-behavior:smooth;
+      scroll-padding-top:calc(var(--header-h) + 16px);
+    }
+
+    body{
+      font-family:var(--font-body);
+      background:var(--black-deep);
+      color:var(--text-main);
+      line-height:1.8;
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+
+    img{ max-width:100%; display:block; }
+    a{ color:inherit; text-decoration:none; }
+    button{ font-family:inherit; cursor:pointer; border:none; background:none; color:inherit; }
+    ul{ list-style:none; }
+
+    h1,h2,h3,h4,.font-head{ font-family:var(--font-head); font-weight:800; line-height:1.5; }
+
+    ::selection{ background:var(--gold); color:var(--black-deep); }
+
+    /* Custom scrollbar (desktop) */
+    @media (min-width: 1025px){
+      ::-webkit-scrollbar{ width:10px; }
+      ::-webkit-scrollbar-track{ background:var(--black-deep); }
+      ::-webkit-scrollbar-thumb{ background:linear-gradient(180deg,var(--gold-dark),var(--gold)); border-radius:99px; border:2px solid var(--black-deep); }
+    }
+
+    /* Focus visibility for accessibility */
+    :is(a,button,input,[tabindex]):focus-visible{
+      outline:2px solid var(--gold-light);
+      outline-offset:3px;
+      border-radius:6px;
+    }
+
+    .container{
+      width:min(1180px, 92%);
+      margin-inline:auto;
+    }
+
+    .num{ font-family:var(--font-body); font-feature-settings:"ss01"; }
+
+    /* ============================================================
+       2. Shared UI Pieces
+       ============================================================ */
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:.55rem;
+      padding:.85rem 1.7rem;
+      border-radius:14px;
+      font-family:var(--font-head);
+      font-weight:700;
+      font-size:.98rem;
+      transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+      white-space:nowrap;
+    }
+    .btn:active{ transform:translateY(1px) scale(.98); }
+    .btn svg{ width:19px; height:19px; }
+
+    .btn-gold{
+      background:linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 45%, var(--gold-dark) 100%);
+      color:#1a1200;
+      box-shadow:0 8px 26px rgba(212,175,55,.32);
+      position:relative;
+      overflow:hidden;
+    }
+    .btn-gold::after{
+      content:"";
+      position:absolute; inset:0;
+      background:linear-gradient(115deg, transparent 30%, rgba(255,255,255,.45) 50%, transparent 70%);
+      transform:translateX(160%);
+      transition:transform .7s ease;
+    }
+    .btn-gold:hover{
+      transform:translateY(-3px);
+      box-shadow:0 14px 38px rgba(212,175,55,.45);
+    }
+    .btn-gold:hover::after{ transform:translateX(-160%); }
+
+    .btn-ghost{
+      border:1px solid var(--line);
+      color:var(--text-main);
+      background:var(--glass);
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
+    }
+    .btn-ghost:hover{
+      border-color:rgba(212,175,55,.55);
+      background:rgba(212,175,55,.08);
+      transform:translateY(-3px);
+      box-shadow:var(--shadow-gold);
+    }
+
+    .section{ padding:96px 0; position:relative; }
+    .section-head{ text-align:center; max-width:640px; margin:0 auto 56px; }
+    .section-head .eyebrow{
+      display:inline-flex; align-items:center; gap:.5rem;
+      font-size:.82rem; font-weight:700; letter-spacing:.5px;
+      color:var(--gold-light);
+      background:rgba(212,175,55,.09);
+      border:1px solid var(--line);
+      border-radius:99px;
+      padding:.35rem 1rem;
+      margin-bottom:1rem;
+    }
+    .section-head .eyebrow svg{ width:15px; height:15px; }
+    .section-head h2{
+      font-size:clamp(1.6rem, 3.4vw, 2.3rem);
+      margin-bottom:.7rem;
+    }
+    .section-head p{ color:var(--text-muted); font-size:1rem; }
+
+    .gold-text{
+      background:linear-gradient(120deg, var(--gold-light) 10%, var(--gold) 40%, #fff3c4 55%, var(--gold) 70%, var(--gold-dark) 95%);
+      background-size:200% auto;
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
+      color:transparent;
+      animation:goldShimmer 5s linear infinite;
+    }
+    @keyframes goldShimmer{
+      to{ background-position:-200% center; }
+    }
+
+    /* Glass card base */
+    .glass{
+      background:linear-gradient(160deg, var(--glass-strong), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius:var(--radius-lg);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      box-shadow:var(--shadow-soft);
+    }
+
+    /* Reveal-on-scroll */
+    .reveal{
+      opacity:0;
+      transform:translateY(34px);
+      transition:opacity .8s cubic-bezier(.22,.9,.35,1), transform .8s cubic-bezier(.22,.9,.35,1);
+      will-change:opacity, transform;
+    }
+    .reveal.visible{ opacity:1; transform:none; }
+    .reveal-delay-1{ transition-delay:.12s; }
+    .reveal-delay-2{ transition-delay:.24s; }
+    .reveal-delay-3{ transition-delay:.36s; }
+
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{ animation-duration:.001s !important; transition-duration:.001s !important; }
+      html{ scroll-behavior:auto; }
+      .reveal{ opacity:1; transform:none; }
+    }
+
+    /* ============================================================
+       3. Header / Navigation
+       ============================================================ */
+    .site-header{
+      position:fixed;
+      top:0; right:0; left:0;
+      z-index:100;
+      height:var(--header-h);
+      display:flex;
+      align-items:center;
+      transition:background .35s ease, box-shadow .35s ease, border-color .35s ease;
+      border-bottom:1px solid transparent;
+    }
+    .site-header.scrolled{
+      background:rgba(11,11,13,.82);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      border-bottom-color:var(--line);
+      box-shadow:0 10px 34px rgba(0,0,0,.5);
+    }
+    .header-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+    }
+
+    .logo{
+      display:flex; align-items:center; gap:.65rem;
+      font-family:var(--font-head);
+      font-size:1.28rem; font-weight:800;
+      color:var(--white-warm);
+      flex-shrink:0;
+    }
+    .logo-badge{
+      width:44px; height:44px;
+      display:grid; place-items:center;
+      border-radius:14px;
+      background:linear-gradient(135deg, var(--gold-light), var(--gold) 55%, var(--gold-dark));
+      box-shadow:0 6px 18px rgba(212,175,55,.4), inset 0 1px 0 rgba(255,255,255,.5);
+      color:#1a1200;
+    }
+    .logo-badge svg{ width:24px; height:24px; }
+    .logo .logo-text{ line-height:1.2; }
+    .logo .logo-sub{
+      display:block; font-family:var(--font-body);
+      font-size:.66rem; font-weight:400;
+      color:var(--text-faint); letter-spacing:2px;
+    }
+
+    .main-nav{ display:flex; gap:.35rem; }
+    .main-nav a{
+      position:relative;
+      padding:.55rem .95rem;
+      font-size:.93rem; font-weight:500;
+      color:var(--text-muted);
+      border-radius:10px;
+      transition:color .25s ease, background .25s ease;
+    }
+    .main-nav a::after{
+      content:"";
+      position:absolute;
+      bottom:4px; right:50%; transform:translateX(50%);
+      width:0; height:2px; border-radius:2px;
+      background:linear-gradient(90deg, var(--gold-light), var(--gold-dark));
+      transition:width .3s ease;
+    }
+    .main-nav a:hover, .main-nav a.active{ color:var(--gold-light); }
+    .main-nav a:hover::after, .main-nav a.active::after{ width:60%; }
+
+    .header-actions{ display:flex; align-items:center; gap:.7rem; }
+    .btn-login{
+      padding:.6rem 1.25rem; font-size:.9rem;
+      border:1px solid var(--line); border-radius:12px;
+      color:var(--text-main);
+      transition:border-color .25s ease, background .25s ease;
+    }
+    .btn-login:hover{ border-color:rgba(212,175,55,.5); background:rgba(212,175,55,.08); }
+    .btn-start{ padding:.62rem 1.3rem; font-size:.9rem; border-radius:12px; }
+
+    /* Hamburger */
+    .hamburger{
+      display:none;
+      width:44px; height:44px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:var(--glass);
+      place-items:center;
+      color:var(--gold-light);
+    }
+    .hamburger svg{ width:22px; height:22px; }
+
+    /* Mobile menu panel */
+    .mobile-menu{
+      position:fixed;
+      inset:0;
+      z-index:200;
+      pointer-events:none;
+    }
+    .mobile-menu .overlay{
+      position:absolute; inset:0;
+      background:rgba(0,0,0,.6);
+      backdrop-filter:blur(4px);
+      -webkit-backdrop-filter:blur(4px);
+      opacity:0;
+      transition:opacity .35s ease;
+    }
+    .mobile-menu .panel{
+      position:absolute;
+      top:0; bottom:0; right:0;
+      width:min(320px, 86vw);
+      background:linear-gradient(200deg, #1a1a1d, var(--black-deep));
+      border-left:1px solid var(--line);
+      padding:1.4rem 1.3rem;
+      display:flex; flex-direction:column;
+      transform:translateX(105%);
+      transition:transform .42s cubic-bezier(.22,.9,.35,1);
+      overflow-y:auto;
+    }
+    .mobile-menu.open{ pointer-events:auto; }
+    .mobile-menu.open .overlay{ opacity:1; }
+    .mobile-menu.open .panel{ transform:none; }
+    .mm-head{
+      display:flex; align-items:center; justify-content:space-between;
+      margin-bottom:1.6rem;
+    }
+    .mm-close{
+      width:42px; height:42px;
+      display:grid; place-items:center;
+      border:1px solid var(--line); border-radius:12px;
+      color:var(--gold-light);
+    }
+    .mm-nav{ display:flex; flex-direction:column; gap:.25rem; margin-bottom:1.4rem; }
+    .mm-nav a{
+      display:flex; align-items:center; gap:.8rem;
+      padding:.85rem 1rem;
+      border-radius:12px;
+      color:var(--text-muted);
+      font-weight:500;
+      transition:background .25s ease, color .25s ease;
+    }
+    .mm-nav a:hover{ background:rgba(212,175,55,.08); color:var(--gold-light); }
+    .mm-nav a svg{ width:19px; height:19px; color:var(--gold); }
+    .mm-actions{ margin-top:auto; display:flex; flex-direction:column; gap:.7rem; }
+    .mm-actions .btn{ width:100%; }
+
+    /* ============================================================
+       4. Hero
+       ============================================================ */
+    .hero{
+      position:relative;
+      padding-top:calc(var(--header-h) + 64px);
+      padding-bottom:64px;
+      overflow:hidden;
+    }
+    .hero-bg{
+      position:absolute; inset:0;
+      pointer-events:none;
+      z-index:-2;
+    }
+    .hero-bg::before{
+      content:"";
+      position:absolute;
+      top:-220px; left:-140px;
+      width:640px; height:640px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(212,175,55,.16) 0%, rgba(212,175,55,.05) 40%, transparent 70%);
+      filter:blur(10px);
+      animation:pulseGlow 7s ease-in-out infinite;
+    }
+    .hero-bg::after{
+      content:"";
+      position:absolute;
+      bottom:-260px; right:-160px;
+      width:560px; height:560px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(166,124,0,.13) 0%, transparent 65%);
+      animation:pulseGlow 9s ease-in-out infinite reverse;
+    }
+    @keyframes pulseGlow{
+      0%,100%{ opacity:.7; transform:scale(1); }
+      50%{ opacity:1; transform:scale(1.08); }
+    }
+    #goldParticles{
+      position:absolute; inset:0;
+      z-index:-1;
+      width:100%; height:100%;
+      pointer-events:none;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      align-items:center;
+      gap:3.4rem;
+    }
+    .hero-badge{
+      display:inline-flex; align-items:center; gap:.55rem;
+      padding:.42rem 1.05rem;
+      border:1px solid var(--line);
+      background:var(--glass);
+      border-radius:99px;
+      font-size:.82rem; color:var(--text-muted);
+      margin-bottom:1.4rem;
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
+    }
+    .hero-badge .dot{
+      width:8px; height:8px; border-radius:50%;
+      background:var(--green);
+      box-shadow:0 0 10px var(--green);
+      animation:blink 1.6s ease-in-out infinite;
+    }
+    @keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:.35;} }
+
+    .hero h1{
+      font-size:clamp(2rem, 4.6vw, 3.3rem);
+      margin-bottom:1.1rem;
+      line-height:1.45;
+    }
+    .hero-sub{
+      color:var(--text-muted);
+      font-size:clamp(.98rem, 1.6vw, 1.12rem);
+      max-width:34rem;
+      margin-bottom:2.1rem;
+    }
+    .hero-cta{ display:flex; gap:.9rem; flex-wrap:wrap; margin-bottom:2.6rem; }
+
+    .hero-features{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:.85rem;
+    }
+    .hero-feat{
+      display:flex; flex-direction:column; gap:.4rem;
+      padding:.9rem 1rem;
+      background:var(--glass);
+      border:1px solid var(--line);
+      border-radius:var(--radius-md);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    }
+    .hero-feat:hover{
+      transform:translateY(-4px);
+      border-color:rgba(212,175,55,.4);
+      box-shadow:var(--shadow-gold);
+    }
+    .hero-feat svg{ width:20px; height:20px; color:var(--gold); }
+    .hero-feat span{ font-size:.84rem; font-weight:600; }
+
+    /* Hero visual */
+    .hero-visual{
+      position:relative;
+      display:grid;
+      place-items:center;
+      min-height:420px;
+    }
+    .hero-ring{
+      position:absolute;
+      width:min(430px, 88%);
+      aspect-ratio:1;
+      border:1px solid rgba(212,175,55,.22);
+      border-radius:50%;
+      animation:spinSlow 26s linear infinite;
+    }
+    .hero-ring::before{
+      content:"";
+      position:absolute; top:8%; right:12%;
+      width:12px; height:12px; border-radius:50%;
+      background:var(--gold-light);
+      box-shadow:0 0 16px 4px rgba(245,215,110,.7);
+    }
+    .hero-ring.ring-2{
+      width:min(520px, 100%);
+      border-color:rgba(212,175,55,.1);
+      border-style:dashed;
+      animation-duration:44s;
+      animation-direction:reverse;
+    }
+    @keyframes spinSlow{ to{ transform:rotate(360deg); } }
+
+    .hero-img-wrap{
+      position:relative;
+      width:min(370px, 82%);
+      aspect-ratio:1;
+      border-radius:50%;
+      padding:10px;
+      background:conic-gradient(from 180deg, rgba(212,175,55,.55), rgba(245,215,110,.15), rgba(166,124,0,.5), rgba(212,175,55,.55));
+      box-shadow:0 0 90px rgba(212,175,55,.28), 0 40px 90px rgba(0,0,0,.6);
+      animation:floatY 7s ease-in-out infinite;
+    }
+    @keyframes floatY{
+      0%,100%{ transform:translateY(0); }
+      50%{ transform:translateY(-16px); }
+    }
+    .hero-img-wrap .img-inner{
+      width:100%; height:100%;
+      border-radius:50%;
+      overflow:hidden;
+      background:radial-gradient(circle at 35% 30%, #3a2f0c, #151006 70%);
+      display:grid; place-items:center;
+    }
+    .hero-img-wrap img{
+      width:100%; height:100%;
+      object-fit:cover;
+      filter:saturate(1.12) contrast(1.05);
+    }
+    /* Floating mini badges over hero image */
+    .float-chip{
+      position:absolute;
+      display:flex; align-items:center; gap:.55rem;
+      padding:.6rem .95rem;
+      border-radius:14px;
+      background:rgba(21,21,21,.78);
+      border:1px solid rgba(212,175,55,.35);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      box-shadow:var(--shadow-soft);
+      font-size:.8rem; font-weight:600;
+      animation:floatY 6s ease-in-out infinite;
+      z-index:2;
+    }
+    .float-chip svg{ width:17px; height:17px; color:var(--gold-light); }
+    .chip-1{ top:8%; right:-4%; animation-delay:.8s; }
+    .chip-2{ bottom:14%; left:-6%; animation-delay:1.6s; }
+    .chip-3{ bottom:-4%; right:16%; animation-delay:2.4s; }
+
+    /* ============================================================
+       5. Live Price
+       ============================================================ */
+    .price-section{ background:linear-gradient(180deg, var(--black-deep), #101010 50%, var(--black-deep)); }
+    .price-card{
+      max-width:860px;
+      margin-inline:auto;
+      padding:2.4rem 2.2rem;
+      position:relative;
+      overflow:hidden;
+    }
+    .price-card::before{
+      content:"";
+      position:absolute;
+      top:-90px; left:50%; transform:translateX(-50%);
+      width:520px; height:220px;
+      background:radial-gradient(ellipse, rgba(212,175,55,.14), transparent 70%);
+      pointer-events:none;
+    }
+    .price-top{
+      display:flex; align-items:center; justify-content:space-between;
+      flex-wrap:wrap; gap:.8rem;
+      margin-bottom:1.9rem;
+    }
+    .price-title{ display:flex; align-items:center; gap:.8rem; }
+    .price-title .icon-box{
+      width:48px; height:48px;
+      display:grid; place-items:center;
+      border-radius:14px;
+      background:linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+      color:#1a1200;
+      box-shadow:0 6px 18px rgba(212,175,55,.35);
+    }
+    .price-title .icon-box svg{ width:24px; height:24px; }
+    .price-title h3{ font-size:1.15rem; }
+    .price-title small{ display:block; font-family:var(--font-body); font-weight:400; font-size:.78rem; color:var(--text-faint); }
+
+    .live-badge{
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:.4rem 1rem;
+      border-radius:99px;
+      background:rgba(34,197,94,.1);
+      border:1px solid rgba(34,197,94,.35);
+      color:#4ade80;
+      font-size:.8rem; font-weight:700;
+    }
+    .live-badge .dot{
+      width:8px; height:8px; border-radius:50%;
+      background:var(--green);
+      box-shadow:0 0 10px var(--green);
+      animation:blink 1.4s ease-in-out infinite;
+    }
+
+    .price-main{
+      display:grid;
+      grid-template-columns:auto 1fr;
+      align-items:end;
+      gap:1.6rem;
+      margin-bottom:1.9rem;
+      flex-wrap:wrap;
+    }
+    .price-value{
+      font-family:var(--font-head);
+      font-weight:800;
+      font-size:clamp(2.1rem, 5vw, 3.2rem);
+      letter-spacing:-.5px;
+      line-height:1.2;
+      transition:color .3s ease;
+    }
+    .price-value.up{ color:var(--green); text-shadow:0 0 30px rgba(34,197,94,.35); }
+    .price-value.down{ color:var(--red); text-shadow:0 0 30px rgba(239,68,68,.35); }
+    .price-value.flash-up{ animation:flashUp .9s ease; }
+    .price-value.flash-down{ animation:flashDown .9s ease; }
+    @keyframes flashUp{ 0%{ filter:brightness(1.8); transform:scale(1.015);} 100%{ filter:brightness(1); transform:none;} }
+    @keyframes flashDown{ 0%{ filter:brightness(1.5); transform:scale(.99);} 100%{ filter:brightness(1); transform:none;} }
+    .price-unit{ font-size:.95rem; font-weight:400; color:var(--text-faint); margin-right:.4rem; }
+
+    .price-meta{
+      display:flex; flex-direction:column; gap:.55rem;
+      padding-bottom:.3rem;
+    }
+    .meta-row{ display:flex; align-items:center; gap:.55rem; font-size:.86rem; color:var(--text-muted); }
+    .meta-row svg{ width:15px; height:15px; color:var(--gold); flex-shrink:0; }
+    .change-chip{
+      display:inline-flex; align-items:center; gap:.35rem;
+      padding:.28rem .8rem;
+      border-radius:99px;
+      font-weight:700; font-size:.85rem;
+      transition:background .3s ease, color .3s ease, border-color .3s ease;
+    }
+    .change-chip svg{ width:15px; height:15px; }
+    .change-chip.up{ background:rgba(34,197,94,.12); color:#4ade80; border:1px solid rgba(34,197,94,.3); }
+    .change-chip.down{ background:rgba(239,68,68,.12); color:#f87171; border:1px solid rgba(239,68,68,.3); }
+
+    .market-status{
+      display:flex; align-items:center; gap:.6rem;
+      flex-wrap:wrap;
+      padding:1rem 1.3rem;
+      background:var(--glass);
+      border:1px solid var(--line);
+      border-radius:var(--radius-md);
+      font-size:.88rem;
+      color:var(--text-muted);
+      margin-bottom:1.2rem;
+    }
+    .market-status .status-label{ font-weight:700; color:var(--text-main); }
+    .trend-tag{
+      display:inline-flex; align-items:center; gap:.4rem;
+      padding:.25rem .85rem; border-radius:99px;
+      font-weight:700; font-size:.8rem;
+    }
+    .trend-tag.bullish{ background:rgba(34,197,94,.12); color:#4ade80; border:1px solid rgba(34,197,94,.3); }
+    .trend-tag.bearish{ background:rgba(239,68,68,.12); color:#f87171; border:1px solid rgba(239,68,68,.3); }
+    .trend-tag svg{ width:14px; height:14px; }
+
+    .demo-note{
+      display:flex; align-items:flex-start; gap:.7rem;
+      padding:.9rem 1.1rem;
+      border-radius:var(--radius-sm);
+      background:rgba(245,215,110,.06);
+      border:1px dashed rgba(212,175,55,.4);
+      font-size:.8rem;
+      color:rgba(245,215,110,.85);
+      line-height:1.9;
+    }
+    .demo-note svg{ width:17px; height:17px; flex-shrink:0; margin-top:4px; color:var(--gold-light); }
+
+    /* Mini stat grid under price card */
+    .price-stats{
+      max-width:860px;
+      margin:1.2rem auto 0;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:.9rem;
+    }
+    .p-stat{
+      padding:1.05rem 1.2rem;
+      background:var(--glass);
+      border:1px solid var(--line);
+      border-radius:var(--radius-md);
+      transition:transform .3s ease, border-color .3s ease;
+    }
+    .p-stat:hover{ transform:translateY(-4px); border-color:rgba(212,175,55,.35); }
+    .p-stat .label{ font-size:.78rem; color:var(--text-faint); margin-bottom:.25rem; }
+    .p-stat .val{ font-weight:700; font-size:1.02rem; }
+
+    /* ============================================================
+       6. Chart
+       ============================================================ */
+    .chart-section{ background:var(--black-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .chart-card{
+      max-width:960px;
+      margin-inline:auto;
+      padding:1.9rem 2rem;
+    }
+    .chart-toolbar{
+      display:flex; align-items:center; justify-content:space-between;
+      flex-wrap:wrap; gap:1rem;
+      margin-bottom:1.5rem;
+    }
+    .chart-toolbar h3{ font-size:1.08rem; display:flex; align-items:center; gap:.6rem; }
+    .chart-toolbar h3 svg{ width:20px; height:20px; color:var(--gold); }
+    .range-filters{
+      display:flex; gap:.4rem;
+      background:rgba(0,0,0,.35);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:.35rem;
+      flex-wrap:wrap;
+    }
+    .range-filters button{
+      padding:.45rem 1rem;
+      border-radius:10px;
+      font-size:.82rem; font-weight:600;
+      color:var(--text-muted);
+      transition:background .25s ease, color .25s ease, box-shadow .25s ease;
+    }
+    .range-filters button:hover{ color:var(--gold-light); }
+    .range-filters button.active{
+      background:linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+      color:#1a1200;
+      box-shadow:0 4px 14px rgba(212,175,55,.35);
+    }
+    .chart-body{ position:relative; height:380px; }
+    .chart-body canvas{ width:100% !important; height:100% !important; }
+    .chart-note{
+      margin-top:1.1rem;
+      font-size:.76rem;
+      color:var(--text-faint);
+      display:flex; align-items:center; gap:.5rem;
+    }
+    .chart-note svg{ width:14px; height:14px; flex-shrink:0; }
+
+    /* ============================================================
+       7. Buy / Sell
+       ============================================================ */
+    .trade-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1.6rem;
+      max-width:980px;
+      margin-inline:auto;
+    }
+    .trade-card{
+      position:relative;
+      padding:2.4rem 2.2rem;
+      overflow:hidden;
+      transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+    }
+    .trade-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(212,175,55,.45);
+      box-shadow:0 24px 60px rgba(0,0,0,.55), var(--shadow-gold);
+    }
+    .trade-card::before{
+      content:"";
+      position:absolute;
+      top:-70px; inset-inline-start:-70px;
+      width:240px; height:240px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(212,175,55,.14), transparent 70%);
+      pointer-events:none;
+    }
+    .trade-icon{
+      width:64px; height:64px;
+      display:grid; place-items:center;
+      border-radius:18px;
+      margin-bottom:1.3rem;
+      color:#1a1200;
+      box-shadow:0 10px 26px rgba(212,175,55,.3);
+      transition:transform .35s ease;
+    }
+    .trade-card:hover .trade-icon{ transform:scale(1.08) rotate(-4deg); }
+    .trade-icon svg{ width:30px; height:30px; }
+    .trade-icon.buy{ background:linear-gradient(135deg, var(--gold-light), var(--gold) 60%, var(--gold-dark)); }
+    .trade-icon.sell{ background:linear-gradient(135deg, #e8e2d0, #c9b98a 60%, var(--gold-dark)); }
+    .trade-card h3{ font-size:1.32rem; margin-bottom:.6rem; }
+    .trade-card p{ color:var(--text-muted); font-size:.95rem; margin-bottom:1.7rem; }
+    .trade-card .btn{ width:100%; }
+
+    /* ============================================================
+       8. Security / Vault
+       ============================================================ */
+    .security-section{
+      background:
+        radial-gradient(ellipse 60% 45% at 30% 55%, rgba(212,175,55,.1), transparent 70%),
+        var(--black-deep);
+      overflow:hidden;
+    }
+    .sec-grid{
+      display:grid;
+      grid-template-columns:1fr 1.05fr;
+      align-items:center;
+      gap:3.5rem;
+    }
+    .vault-visual{ position:relative; }
+    .vault-visual::before{
+      content:"";
+      position:absolute; inset:-14%;
+      background:radial-gradient(circle at 50% 55%, rgba(212,175,55,.22), transparent 60%);
+      filter:blur(18px);
+      animation:pulseGlow 6s ease-in-out infinite;
+      pointer-events:none;
+    }
+    .vault-frame{
+      position:relative;
+      border-radius:26px;
+      overflow:hidden;
+      border:1px solid rgba(212,175,55,.35);
+      box-shadow:0 0 70px rgba(212,175,55,.2), 0 40px 90px rgba(0,0,0,.65);
+      background:linear-gradient(160deg, #2a2208, #100d04);
+      aspect-ratio:4/3.4;
+    }
+    /* Fallback گرافیکی CSS برای زمانی که تصویر بارگذاری نمی‌شود */
+    .vault-fallback{
+      position:absolute; inset:0; z-index:0;
+      display:flex; flex-direction:column;
+      justify-content:center; align-items:center;
+      gap:12px;
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 58%, rgba(212,175,55,.28), transparent 75%),
+        linear-gradient(160deg, #1c1606, #0d0a03 75%);
+      overflow:hidden;
+    }
+    .vault-fallback::before{
+      content:"";
+      position:absolute; inset:auto 0 -30px 0;
+      height:45%;
+      background:linear-gradient(0deg, rgba(0,0,0,.75), transparent);
+    }
+    .vbar{
+      position:relative;
+      width:66%;
+      height:36px;
+      border-radius:9px;
+      background:linear-gradient(180deg, #FBE68F 0%, #F5D76E 25%, #D4AF37 55%, #8a6600 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.6),
+        inset 0 -4px 8px rgba(90,64,0,.55),
+        0 10px 22px rgba(0,0,0,.55),
+        0 0 26px rgba(212,175,55,.3);
+    }
+    .vbar::after{
+      content:"";
+      position:absolute; inset-inline:6%;
+      top:50%; height:2px;
+      background:rgba(255,255,255,.28);
+      border-radius:2px;
+    }
+    .vbar:nth-child(2){ width:78%; }
+    .vbar:nth-child(3){ width:72%; transform:translateY(0) rotate(1.2deg); }
+    .vault-frame img{
+      position:relative; z-index:1;
+      width:100%; height:100%;
+      object-fit:cover;
+      filter:brightness(.92) saturate(1.15);
+      transition:transform 6s ease;
+    }
+    .vault-frame:hover img{ transform:scale(1.06); }
+    .vault-frame::after{
+      content:"";
+      position:absolute; inset:0;
+      background:linear-gradient(200deg, rgba(212,175,55,.12), transparent 40%, rgba(0,0,0,.35));
+      pointer-events:none;
+    }
+    .vault-shield{
+      position:absolute;
+      bottom:-20px; inset-inline-end:-14px;
+      width:88px; height:88px;
+      display:grid; place-items:center;
+      border-radius:50%;
+      background:linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+      color:#1a1200;
+      box-shadow:0 14px 34px rgba(212,175,55,.45), inset 0 2px 0 rgba(255,255,255,.5);
+      animation:floatY 5s ease-in-out infinite;
+      z-index:2;
+    }
+    .vault-shield svg{ width:40px; height:40px; }
+
+    .sec-content .eyebrow{
+      display:inline-flex; align-items:center; gap:.5rem;
+      font-size:.8rem; font-weight:700;
+      color:var(--gold-light);
+      background:rgba(212,175,55,.09);
+      border:1px solid var(--line);
+      border-radius:99px;
+      padding:.35rem 1rem;
+      margin-bottom:1.1rem;
+    }
+    .sec-content .eyebrow svg{ width:15px; height:15px; }
+    .sec-content h2{ font-size:clamp(1.6rem, 3.4vw, 2.3rem); margin-bottom:1rem; }
+    .sec-content > p{ color:var(--text-muted); margin-bottom:2rem; max-width:30rem; }
+    .sec-features{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1rem;
+    }
+    .sec-item{
+      display:flex; align-items:flex-start; gap:.9rem;
+      padding:1.1rem 1.15rem;
+      background:var(--glass);
+      border:1px solid var(--line);
+      border-radius:var(--radius-md);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    }
+    .sec-item:hover{
+      transform:translateY(-4px);
+      border-color:rgba(212,175,55,.4);
+      box-shadow:var(--shadow-gold);
+    }
+    .sec-item .si-icon{
+      width:42px; height:42px;
+      flex-shrink:0;
+      display:grid; place-items:center;
+      border-radius:12px;
+      background:rgba(212,175,55,.12);
+      border:1px solid rgba(212,175,55,.3);
+      color:var(--gold-light);
+    }
+    .sec-item .si-icon svg{ width:20px; height:20px; }
+    .sec-item h4{ font-size:.95rem; margin-bottom:.15rem; }
+    .sec-item p{ font-size:.8rem; color:var(--text-faint); line-height:1.7; }
+
+    /* ============================================================
+       9. Advantages
+       ============================================================ */
+    .adv-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:1.3rem;
+    }
+    .adv-card{
+      position:relative;
+      padding:1.9rem 1.7rem;
+      overflow:hidden;
+      transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+    }
+    .adv-card:hover{
+      transform:translateY(-7px);
+      border-color:rgba(212,175,55,.45);
+      box-shadow:0 20px 50px rgba(0,0,0,.5), var(--shadow-gold);
+    }
+    .adv-card::after{
+      content:"";
+      position:absolute;
+      top:0; right:0; left:0;
+      height:2px;
+      background:linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity:0;
+      transition:opacity .35s ease;
+    }
+    .adv-card:hover::after{ opacity:1; }
+    .adv-icon{
+      width:52px; height:52px;
+      display:grid; place-items:center;
+      border-radius:14px;
+      background:rgba(212,175,55,.1);
+      border:1px solid rgba(212,175,55,.28);
+      color:var(--gold-light);
+      margin-bottom:1.15rem;
+      transition:transform .35s ease, background .35s ease;
+    }
+    .adv-card:hover .adv-icon{
+      transform:scale(1.1) rotate(-5deg);
+      background:rgba(212,175,55,.18);
+    }
+    .adv-icon svg{ width:24px; height:24px; }
+    .adv-card h3{ font-size:1.05rem; margin-bottom:.5rem; }
+    .adv-card p{ font-size:.87rem; color:var(--text-muted); }
+
+    /* ============================================================
+       10. Stats
+       ============================================================ */
+    .stats-section{
+      background:linear-gradient(180deg, var(--black-deep), #12100a 55%, var(--black-deep));
+    }
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:1.2rem;
+      max-width:1000px;
+      margin-inline:auto;
+    }
+    .stat-card{
+      text-align:center;
+      padding:2.1rem 1.4rem;
+      position:relative;
+      overflow:hidden;
+      transition:transform .35s ease, border-color .35s ease;
+    }
+    .stat-card:hover{ transform:translateY(-6px); border-color:rgba(212,175,55,.45); }
+    .stat-card svg{ width:30px; height:30px; color:var(--gold); margin-bottom:.8rem; }
+    .stat-num{
+      font-family:var(--font-head);
+      font-weight:800;
+      font-size:clamp(1.7rem, 3.4vw, 2.4rem);
+      line-height:1.3;
+    }
+    .stat-label{ font-size:.88rem; color:var(--text-muted); margin-top:.3rem; }
+    .stats-placeholder{
+      text-align:center;
+      margin-top:1.6rem;
+      font-size:.78rem;
+      color:var(--text-faint);
+      display:flex; align-items:center; justify-content:center; gap:.5rem;
+    }
+    .stats-placeholder svg{ width:14px; height:14px; flex-shrink:0; }
+
+    /* ============================================================
+       11. FAQ
+       ============================================================ */
+    .faq-list{
+      max-width:780px;
+      margin-inline:auto;
+      display:flex;
+      flex-direction:column;
+      gap:.9rem;
+    }
+    .faq-item{
+      border-radius:var(--radius-md);
+      overflow:hidden;
+      transition:border-color .3s ease, box-shadow .3s ease;
+    }
+    .faq-item.open{ border-color:rgba(212,175,55,.45); box-shadow:var(--shadow-gold); }
+    .faq-q{
+      width:100%;
+      display:flex; align-items:center; justify-content:space-between; gap:1rem;
+      padding:1.2rem 1.5rem;
+      text-align:right;
+      font-family:var(--font-head);
+      font-weight:700; font-size:1rem;
+      color:var(--text-main);
+      transition:color .25s ease;
+    }
+    .faq-q:hover{ color:var(--gold-light); }
+    .faq-q .chev{
+      width:32px; height:32px;
+      flex-shrink:0;
+      display:grid; place-items:center;
+      border-radius:10px;
+      border:1px solid var(--line);
+      color:var(--gold);
+      transition:transform .4s cubic-bezier(.22,.9,.35,1), background .3s ease, color .3s ease;
+    }
+    .faq-item.open .faq-q .chev{
+      transform:rotate(180deg);
+      background:linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+      color:#1a1200;
+    }
+    .faq-q .chev svg{ width:17px; height:17px; }
+    .faq-a{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .45s cubic-bezier(.22,.9,.35,1), opacity .4s ease;
+      opacity:0;
+    }
+    .faq-item.open .faq-a{ opacity:1; }
+    .faq-a p{
+      padding:0 1.5rem 1.3rem;
+      color:var(--text-muted);
+      font-size:.92rem;
+    }
+
+    /* ============================================================
+       12. Support
+       ============================================================ */
+    .support-section{
+      background:
+        radial-gradient(ellipse 55% 60% at 50% 110%, rgba(212,175,55,.13), transparent 70%),
+        var(--black-soft);
+      border-top:1px solid var(--line);
+    }
+    .support-card{
+      max-width:820px;
+      margin-inline:auto;
+      text-align:center;
+      padding:3.2rem 2.4rem;
+      position:relative;
+      overflow:hidden;
+    }
+    .support-card::before{
+      content:"";
+      position:absolute;
+      top:-120px; left:50%; transform:translateX(-50%);
+      width:480px; height:280px;
+      background:radial-gradient(ellipse, rgba(212,175,55,.16), transparent 70%);
+      pointer-events:none;
+    }
+    .support-icon{
+      width:76px; height:76px;
+      margin:0 auto 1.4rem;
+      display:grid; place-items:center;
+      border-radius:50%;
+      background:linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+      color:#1a1200;
+      box-shadow:0 14px 40px rgba(212,175,55,.4);
+      animation:floatY 5s ease-in-out infinite;
+    }
+    .support-icon svg{ width:36px; height:36px; }
+    .support-card h2{ font-size:clamp(1.5rem, 3.2vw, 2.1rem); margin-bottom:.8rem; }
+    .support-card > p{
+      color:var(--text-muted);
+      max-width:36rem;
+      margin:0 auto 1.8rem;
+    }
+    .support-24{
+      display:inline-flex; align-items:center; gap:.55rem;
+      padding:.5rem 1.2rem;
+      border-radius:99px;
+      background:rgba(34,197,94,.08);
+      border:1px solid rgba(34,197,94,.3);
+      color:#4ade80;
+      font-size:.86rem; font-weight:700;
+      margin-bottom:1.9rem;
+    }
+    .support-24 svg{ width:16px; height:16px; }
+    .tg-id{
+      display:inline-flex; align-items:center; gap:.6rem;
+      padding:.75rem 1.4rem;
+      border-radius:14px;
+      background:rgba(0,0,0,.4);
+      border:1px solid var(--line);
+      font-weight:700; font-size:1.05rem;
+      color:var(--gold-light);
+      direction:ltr;
+      margin-bottom:1.9rem;
+      letter-spacing:.5px;
+    }
+    .tg-id svg{ width:19px; height:19px; color:var(--gold); }
+    .btn-telegram{
+      background:linear-gradient(135deg, #2AABEE, #229ED9);
+      color:#fff;
+      box-shadow:0 10px 30px rgba(42,171,238,.3);
+      padding:1rem 2.2rem;
+      font-size:1rem;
+    }
+    .btn-telegram:hover{
+      transform:translateY(-3px);
+      box-shadow:0 16px 42px rgba(42,171,238,.45);
+    }
+    .btn-telegram svg{ width:22px; height:22px; }
+
+    /* ============================================================
+       13. Footer
+       ============================================================ */
+    .site-footer{
+      background:var(--black-deep);
+      border-top:1px solid var(--line);
+      padding-top:64px;
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr 1.2fr;
+      gap:2.4rem;
+      padding-bottom:2.6rem;
+    }
+    .footer-about p{
+      color:var(--text-muted);
+      font-size:.88rem;
+      margin-top:1rem;
+      max-width:20rem;
+    }
+    .footer-col h4{
+      font-size:1rem;
+      margin-bottom:1.1rem;
+      position:relative;
+      padding-bottom:.6rem;
+    }
+    .footer-col h4::after{
+      content:"";
+      position:absolute;
+      bottom:0; right:0;
+      width:38px; height:2px;
+      border-radius:2px;
+      background:linear-gradient(90deg, var(--gold-light), transparent);
+    }
+    .footer-col ul{ display:flex; flex-direction:column; gap:.65rem; }
+    .footer-col a{
+      color:var(--text-muted);
+      font-size:.88rem;
+      transition:color .25s ease, padding .25s ease;
+      display:inline-flex; align-items:center; gap:.4rem;
+    }
+    .footer-col a::before{
+      content:"›";
+      color:var(--gold);
+      font-weight:700;
+    }
+    .footer-col a:hover{ color:var(--gold-light); padding-inline-start:4px; }
+    .footer-support li{
+      display:flex; align-items:center; gap:.6rem;
+      color:var(--text-muted); font-size:.88rem;
+    }
+    .footer-support svg{ width:16px; height:16px; color:var(--gold); flex-shrink:0; }
+    .footer-support .tg-link{
+      color:var(--gold-light);
+      font-weight:700;
+      direction:ltr;
+    }
+    .footer-support .tg-link:hover{ color:#fff; }
+    .footer-bottom{
+      border-top:1px solid rgba(212,175,55,.1);
+      padding:1.4rem 0;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:1rem; flex-wrap:wrap;
+      font-size:.8rem;
+      color:var(--text-faint);
+    }
+
+    /* ============================================================
+       14. Responsive
+       ============================================================ */
+    @media (max-width: 1024px){
+      .main-nav{ display:none; }
+      .header-actions .btn-login{ display:none; }
+      .hamburger{ display:grid; }
+      .hero-grid{ grid-template-columns:1fr; text-align:center; gap:2.6rem; }
+      .hero-sub{ margin-inline:auto; }
+      .hero-cta{ justify-content:center; }
+      .hero-features{ grid-template-columns:repeat(2,1fr); text-align:right; }
+      .hero-visual{ order:-1; min-height:340px; }
+      .sec-grid{ grid-template-columns:1fr; gap:3rem; }
+      .adv-grid{ grid-template-columns:repeat(2,1fr); }
+      .stats-grid{ grid-template-columns:repeat(2,1fr); }
+      .footer-grid{ grid-template-columns:1fr 1fr; }
+    }
+    @media (max-width: 720px){
+      .section{ padding:68px 0; }
+      .header-actions .btn-start{ display:none; }
+      .hero-features{ grid-template-columns:repeat(2,1fr); }
+      .price-card{ padding:1.8rem 1.4rem; }
+      .price-main{ grid-template-columns:1fr; gap:.9rem; align-items:start; }
+      .price-stats{ grid-template-columns:repeat(2,1fr); }
+      .chart-card{ padding:1.4rem 1.1rem; }
+      .chart-body{ height:300px; }
+      .chart-toolbar{ flex-direction:column; align-items:stretch; }
+      .range-filters{ justify-content:center; }
+      .trade-grid{ grid-template-columns:1fr; }
+      .sec-features{ grid-template-columns:1fr; }
+      .adv-grid{ grid-template-columns:1fr; }
+      .footer-grid{ grid-template-columns:1fr; gap:2rem; }
+      .footer-bottom{ flex-direction:column; text-align:center; }
+      .float-chip{ font-size:.7rem; padding:.5rem .7rem; }
+      .hero-cta .btn{ flex:1; justify-content:center; }
+    }
+    @media (max-width: 420px){
+      .hero-features{ grid-template-columns:1fr 1fr; }
+      .price-stats{ grid-template-columns:1fr 1fr; }
+      .stats-grid{ grid-template-columns:1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================
+       Header
+       ========================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#hero" class="logo" aria-label="طلا با ما - صفحه اصلی">
+        <span class="logo-badge" aria-hidden="true"><i data-lucide="coins"></i></span>
+        <span class="logo-text">
+          طلا با ما
+          <span class="logo-sub">TALA BA MA</span>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="منوی اصلی">
+        <a href="#hero" class="active">صفحه اصلی</a>
+        <a href="#trade">خرید طلا</a>
+        <a href="#trade">فروش طلا</a>
+        <a href="#price">قیمت لحظه‌ای</a>
+        <a href="#about">درباره ما</a>
+        <a href="#support">پشتیبانی</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-login" id="loginBtn" type="button">
+          <i data-lucide="user" aria-hidden="true"></i>
+          ورود / ثبت‌نام
+        </button>
+        <button class="btn btn-gold btn-start" id="startBtn" type="button">
+          <i data-lucide="trending-up" aria-hidden="true"></i>
+          شروع سرمایه‌گذاری
+        </button>
+        <button class="hamburger" id="hamburgerBtn" type="button" aria-label="باز کردن منو" aria-expanded="false" aria-controls="mobileMenu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="منوی موبایل">
+    <div class="overlay" id="mmOverlay"></div>
+    <div class="panel">
+      <div class="mm-head">
+        <span class="logo">
+          <span class="logo-badge" aria-hidden="true"><i data-lucide="coins"></i></span>
+          <span class="logo-text">طلا با ما</span>
+        </span>
+        <button class="mm-close" id="mmClose" type="button" aria-label="بستن منو">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <nav class="mm-nav" aria-label="منوی موبایل">
+        <a href="#hero"><i data-lucide="home"></i> صفحه اصلی</a>
+        <a href="#trade"><i data-lucide="shopping-cart"></i> خرید طلا</a>
+        <a href="#trade"><i data-lucide="banknote"></i> فروش طلا</a>
+        <a href="#price"><i data-lucide="line-chart"></i> قیمت لحظه‌ای</a>
+        <a href="#about"><i data-lucide="info"></i> درباره ما</a>
+        <a href="#support"><i data-lucide="headphones"></i> پشتیبانی</a>
+      </nav>
+      <div class="mm-actions">
+        <button class="btn btn-ghost" id="mmLoginBtn" type="button">
+          <i data-lucide="user"></i> ورود / ثبت‌نام
+        </button>
+        <button class="btn btn-gold" id="mmStartBtn" type="button">
+          <i data-lucide="trending-up"></i> شروع سرمایه‌گذاری
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==========================================================
+         Hero
+         ========================================================== -->
+    <section class="hero" id="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <canvas id="goldParticles" aria-hidden="true"></canvas>
+
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <span class="hero-badge">
+            <span class="dot" aria-hidden="true"></span>
+            قیمت لحظه‌ای طلای ۱۸ عیار، هر لحظه در دسترس شما
+          </span>
+          <h1>
+            طلا بخر، <span class="gold-text">ارزش پولت</span> رو حفظ کن!
+          </h1>
+          <p class="hero-sub">
+            با طلا با ما، به‌سادگی و در هر ساعت از شبانه‌روز طلای ۱۸ عیار بخر و بفروش.
+            سرمایه‌گذاری در طلا، حالا ساده‌تر، سریع‌تر و امن‌تر از همیشه.
+          </p>
+          <div class="hero-cta">
+            <a href="#trade" class="btn btn-gold">
+              <i data-lucide="shopping-cart" aria-hidden="true"></i>
+              خرید آنلاین طلا
+            </a>
+            <a href="#price" class="btn btn-ghost">
+              <i data-lucide="line-chart" aria-hidden="true"></i>
+              مشاهده قیمت لحظه‌ای
+            </a>
+          </div>
+
+          <div class="hero-features">
+            <div class="hero-feat">
+              <i data-lucide="zap" aria-hidden="true"></i>
+              <span>خرید و فروش آسان</span>
+            </div>
+            <div class="hero-feat">
+              <i data-lucide="badge-check" aria-hidden="true"></i>
+              <span>قیمت‌گذاری شفاف</span>
+            </div>
+            <div class="hero-feat">
+              <i data-lucide="headphones" aria-hidden="true"></i>
+              <span>پشتیبانی ۲۴ ساعته</span>
+            </div>
+            <div class="hero-feat">
+              <i data-lucide="shield-check" aria-hidden="true"></i>
+              <span>امنیت سرمایه</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal visible" aria-hidden="true">
+          <span class="hero-ring"></span>
+          <span class="hero-ring ring-2"></span>
+          <div class="hero-img-wrap">
+            <div class="img-inner">
+              <img
+                src="https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?auto=format&fit=crop&w=740&q=80"
+                alt="" loading="eager" decoding="async"
+                onerror="this.style.display='none'" />
+            </div>
+          </div>
+          <div class="float-chip chip-1">
+            <i data-lucide="gem"></i>
+            طلای ۱۸ عیار
+          </div>
+          <div class="float-chip chip-2">
+            <i data-lucide="wallet"></i>
+            شروع از مبالغ کم
+          </div>
+          <div class="float-chip chip-3">
+            <i data-lucide="clock-4"></i>
+            ۲۴/۷ در دسترس
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         Live Price
+         ========================================================== -->
+    <section class="section price-section" id="price">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow"><i data-lucide="activity"></i> قیمت لحظه‌ای</span>
+          <h2>قیمت روز <span class="gold-text">طلای ۱۸ عیار</span></h2>
+          <p>آخرین قیمت هر گرم طلای ۱۸ عیار همراه با تغییرات بازار</p>
+        </div>
+
+        <div class="price-card glass reveal">
+          <div class="price-top">
+            <div class="price-title">
+              <span class="icon-box" aria-hidden="true"><i data-lucide="gem"></i></span>
+              <h3>
+                طلای ۱۸ عیار
+                <small>هر گرم — تومان</small>
+              </h3>
+            </div>
+            <span class="live-badge">
+              <span class="dot" aria-hidden="true"></span>
+              زنده
+            </span>
+          </div>
+
+          <div class="price-main">
+            <div class="price-value num" id="priceValue">
+              <span id="priceNumber">—</span><span class="price-unit">تومان</span>
+            </div>
+            <div class="price-meta">
+              <div class="meta-row">
+                <i data-lucide="clock-3" aria-hidden="true"></i>
+                آخرین به‌روزرسانی: <strong id="priceUpdatedAt" class="num">—</strong>
+              </div>
+              <div class="meta-row">
+                <i data-lucide="git-compare-arrows" aria-hidden="true"></i>
+                نسبت به دیروز:
+                <span class="change-chip up" id="changeChip">
+                  <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+                  <span id="changePercent" class="num">—</span>
+                </span>
+              </div>
+              <div class="meta-row">
+                <i data-lucide="coins" aria-hidden="true"></i>
+                میزان تغییر:
+                <strong id="changeAmount" class="num">— تومان</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="market-status">
+            <span class="status-label">وضعیت بازار:</span>
+            <span class="trend-tag bullish" id="trendTag">
+              <i data-lucide="trending-up" aria-hidden="true"></i>
+              صعودی
+            </span>
+            <span id="trendDesc">بازار طلا در حالت صعودی قرار دارد.</span>
+          </div>
+
+          <div class="demo-note" role="note">
+            <i data-lucide="info" aria-hidden="true"></i>
+            <span>
+              <strong>توجه:</strong> قیمت‌های نمایش‌داده‌شده در حالت نمایشی (دمو) هستند و
+              قیمت واقعی بازار نمی‌باشند. این بخش برای اتصال به سرویس واقعی قیمت
+              طراحی شده و پس از اتصال به API معتبر، قیمت‌های واقعی نمایش داده می‌شود.
+            </span>
+          </div>
+        </div>
+
+        <div class="price-stats">
+          <div class="p-stat reveal">
+            <div class="label">بیشترین قیمت امروز</div>
+            <div class="val num" id="dayHigh">—</div>
+          </div>
+          <div class="p-stat reveal reveal-delay-1">
+            <div class="label">کمترین قیمت امروز</div>
+            <div class="val num" id="dayLow">—</div>
+          </div>
+          <div class="p-stat reveal reveal-delay-2">
+            <div class="label">قیمت بازگشایی</div>
+            <div class="val num" id="dayOpen">—</div>
+          </div>
+          <div class="p-stat reveal reveal-delay-3">
+            <div class="label">حجم معاملات (گرم)</div>
+            <div class="val num" id="dayVolume">—</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         Chart
+         ========================================================== -->
+    <section class="section chart-section" id="chart">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow"><i data-lucide="line-chart"></i> نمودار قیمت</span>
+          <h2>روند تغییرات <span class="gold-text">قیمت طلا</span></h2>
+          <p>نمودار تغییرات قیمت هر گرم طلای ۱۸ عیار در بازه‌های زمانی مختلف</p>
+        </div>
+
+        <div class="chart-card glass reveal">
+          <div class="chart-toolbar">
+            <h3>
+              <i data-lucide="candlestick-chart" aria-hidden="true"></i>
+              نمودار قیمت طلای ۱۸ عیار
+            </h3>
+            <div class="range-filters" role="tablist" aria-label="بازه زمانی نمودار">
+              <button type="button" data-range="1h">۱ ساعت اخیر</button>
+              <button type="button" data-range="24h" class="active">۲۴ ساعت اخیر</button>
+              <button type="button" data-range="7d">۷ روز اخیر</button>
+              <button type="button" data-range="30d">۳۰ روز اخیر</button>
+              <button type="button" data-range="1y">۱ سال اخیر</button>
+            </div>
+          </div>
+          <div class="chart-body">
+            <canvas id="goldChart" role="img" aria-label="نمودار خطی قیمت طلا در زمان"></canvas>
+          </div>
+          <p class="chart-note">
+            <i data-lucide="info" aria-hidden="true"></i>
+            داده‌های نمودار در حالت نمایشی، نمونه (Mock) هستند و صرفاً جهت نمایش رابط کاربری استفاده می‌شوند.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         Buy / Sell
+         ========================================================== -->
+    <section class="section" id="trade">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow"><i data-lucide="repeat"></i> خرید و فروش</span>
+          <h2>طلای خودت رو <span class="gold-text">بخر یا بفروش</span></h2>
+          <p>بدون واسطه، بدون محدودیت زمانی و به‌اندازه بودجه‌ات</p>
+        </div>
+
+        <div class="trade-grid">
+          <div class="trade-card glass reveal">
+            <span class="trade-icon buy" aria-hidden="true"><i data-lucide="shopping-cart"></i></span>
+            <h3>طلای خودت رو بخر</h3>
+            <p>
+              بدون نیاز به خرید طلای فیزیکی، به‌اندازه بودجه‌ات طلای ۱۸ عیار بخر؛
+              همین حالا سرمایه‌گذاری‌ات رو شروع کن.
+            </p>
+            <button class="btn btn-gold js-start-buy" type="button">
+              <i data-lucide="plus" aria-hidden="true"></i>
+              شروع خرید
+            </button>
+          </div>
+
+          <div class="trade-card glass reveal reveal-delay-1">
+            <span class="trade-icon sell" aria-hidden="true"><i data-lucide="banknote"></i></span>
+            <h3>هر زمان خواستی بفروش</h3>
+            <p>
+              به‌سادگی طلای خودت رو بفروش و ارزش سرمایه‌ات رو نقد کن؛
+              بدون نیاز به مراجعه حضوری.
+            </p>
+            <button class="btn btn-ghost js-start-sell" type="button">
+              <i data-lucide="arrow-down-from-line" aria-hidden="true"></i>
+              شروع فروش
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         Security / Vault
+         ========================================================== -->
+    <section class="section security-section" id="about">
+      <div class="container sec-grid">
+        <div class="vault-visual reveal">
+          <div class="vault-frame">
+            <div class="vault-fallback" aria-hidden="true">
+              <span class="vbar"></span>
+              <span class="vbar"></span>
+              <span class="vbar"></span>
+            </div>
+            <img
+              src="https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=900&q=80"
+              alt="شمش‌های طلا نگهداری‌شده در صندوق امن"
+              loading="lazy" decoding="async"
+              onerror="this.style.display='none'" />
+          </div>
+          <span class="vault-shield" aria-hidden="true"><i data-lucide="shield-check"></i></span>
+        </div>
+
+        <div class="sec-content">
+          <span class="eyebrow reveal"><i data-lucide="shield" aria-hidden="true"></i> امنیت سرمایه</span>
+          <h2 class="reveal">سرمایه‌ات، در <span class="gold-text">امن‌ترین جای ممکن</span></h2>
+          <p class="reveal">
+            ما می‌دانیم که امنیت سرمایه‌ات چقدر اهمیت دارد. در طلا با ما، امنیت دارایی
+            کاربران و حفاظت از اطلاعات آن‌ها در اولویت قرار دارد؛ زیرساخت ما برای
+            شفافیت و آرامش خاطر شما طراحی شده است.
+          </p>
+
+          <div class="sec-features">
+            <div class="sec-item reveal">
+              <span class="si-icon" aria-hidden="true"><i data-lucide="lock"></i></span>
+              <div>
+                <h4>حفاظت از اطلاعات کاربران</h4>
+                <p>اطلاعات شما با رمزنگاری استاندارد محافظت می‌شود.</p>
+              </div>
+            </div>
+            <div class="sec-item reveal reveal-delay-1">
+              <span class="si-icon" aria-hidden="true"><i data-lucide="credit-card"></i></span>
+              <div>
+                <h4>امنیت تراکنش‌های مالی</h4>
+                <p>تراکنش‌ها از درگاه‌های معتبر و با تأیید دومرحله‌ای انجام می‌شود.</p>
+              </div>
+            </div>
+            <div class="sec-item reveal reveal-delay-2">
+              <span class="si-icon" aria-hidden="true"><i data-lucide="eye"></i></span>
+              <div>
+                <h4>شفافیت در معاملات</h4>
+                <p>تاریخچه کامل خرید و فروش، همیشه در دسترس شماست.</p>
+              </div>
+            </div>
+            <div class="sec-item reveal reveal-delay-3">
+              <span class="si-icon" aria-hidden="true"><i data-lucide="vault"></i></span>
+              <div>
+                <h4>نگهداری امن دارایی‌ها</h4>
+                <p>دارایی طلایی شما به‌صورت مستند و قابل پیگیری نگهداری می‌شود.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         Advantages
+         ========================================================== -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow"><i data-lucide="star"></i> مزایای طلا با ما</span>
+          <h2>چرا <span class="gold-text">طلا با ما</span>؟</h2>
+          <p>تجربه‌ای ساده و حرفه‌ای از سرمایه‌گذاری در طلا</p>
+        </div>
+
+        <div class="adv-grid">
+          <div class="adv-card glass reveal">
+            <span class="adv-icon" aria-hidden="true"><i data-lucide="zap"></i></span>
+            <h3>خرید و فروش سریع</h3>
+            <p>در چند کلیک ساده، سفارش خرید یا فروش خود را ثبت کنید؛ بدون کاغذبازی و مراجعه حضوری.</p>
+          </div>
+          <div class="adv-card glass reveal reveal-delay-1">
+            <span class="adv-icon" aria-hidden="true"><i data-lucide="piggy-bank"></i></span>
+            <h3>شروع با مبالغ کم</h3>
+            <p>برای شروع سرمایه‌گذاری در طلا، به بودجه بزرگ نیاز ندارید؛ با هر میزان بودجه شروع کنید.</p>
+          </div>
+          <div class="adv-card glass reveal reveal-delay-2">
+            <span class="adv-icon" aria-hidden="true"><i data-lucide="activity"></i></span>
+            <h3>مشاهده قیمت لحظه‌ای</h3>
+            <p>قیمت روز طلای ۱۸ عیار را همیشه و همه‌جا، به‌صورت لحظه‌ای مشاهده کنید.</p>
+          </div>
+          <div class="adv-card glass reveal">
+            <span class="adv-icon" aria-hidden="true"><i data-lucide="clock-4"></i></span>
+            <h3>دسترسی ۲۴ ساعته</h3>
+            <p>هر ساعت از شبانه‌روز، حتی آخر هفته‌ها، به حساب و بازار خود دسترسی دارید.</p>
+          </div>
+          <div class="adv-card glass reveal reveal-delay-1">
+            <span class="adv-icon" aria-hidden="true"><i data-lucide="mouse-pointer-click"></i></span>
+            <h3>رابط کاربری ساده</h3>
+            <p>طراحی تمیز و روان؛ همه‌چیز سر جای خودش است تا بدون سردرگمی به هدفتان برسید.</p>
+          </div>
+          <div class="adv-card glass reveal reveal-delay-2">
+            <span class="adv-icon" aria-hidden="true"><i data-lucide="badge-check"></i></span>
+            <h3>شفافیت در قیمت‌گذاری</h3>
+            <p>قیمت بر مبنای قیمت گرم طلای ۱۸ عیار محاسبه می‌شود و هیچ هزینه پنهانی وجود ندارد.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         Stats
+         ========================================================== -->
+    <section class="section stats-section" id="stats">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow"><i data-lucide="bar-chart-3"></i> آمار و ارقام</span>
+          <h2>طلا با ما در یک <span class="gold-text">نگاه</span></h2>
+          <p>تصویری کلی از عملکرد و روند رشد پلتفرم</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card glass reveal">
+            <i data-lucide="users" aria-hidden="true"></i>
+            <div class="stat-num num gold-text"><span class="counter" data-target="12500">0</span>+</div>
+            <div class="stat-label">کاربر ثبت‌نام‌شده</div>
+          </div>
+          <div class="stat-card glass reveal reveal-delay-1">
+            <i data-lucide="banknote" aria-hidden="true"></i>
+            <div class="stat-num num gold-text"><span class="counter" data-target="84">0</span>+</div>
+            <div class="stat-label">میلیارد تومان حجم معاملات</div>
+          </div>
+          <div class="stat-card glass reveal reveal-delay-2">
+            <i data-lucide="gem" aria-hidden="true"></i>
+            <div class="stat-num num gold-text"><span class="counter" data-target="1150">0</span>+</div>
+            <div class="stat-label">کیلوگرم طلای معامله‌شده</div>
+          </div>
+          <div class="stat-card glass reveal reveal-delay-3">
+            <i data-lucide="smile" aria-hidden="true"></i>
+            <div class="stat-num num gold-text"><span class="counter" data-target="97">0</span>٪</div>
+            <div class="stat-label">رضایت کاربران</div>
+          </div>
+        </div>
+
+        <p class="stats-placeholder">
+          <i data-lucide="info" aria-hidden="true"></i>
+          اعداد فوق به‌صورت نمونه (Placeholder) نمایش داده شده‌اند و آمار واقعی پلتفرم نمی‌باشند.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         FAQ
+         ========================================================== -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow"><i data-lucide="message-circle-question"></i> سوالات متداول</span>
+          <h2>پاسخ سوالات <span class="gold-text">شما</span></h2>
+          <p>اگر سوالی دارید، احتمالاً پاسخش اینجاست</p>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item glass reveal">
+            <button class="faq-q" type="button" aria-expanded="false">
+              طلا با ما چیست؟
+              <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+            </button>
+            <div class="faq-a">
+              <p>
+                طلا با ما یک پلتفرم آنلاین برای خرید و فروش طلای ۱۸ عیار به‌صورت گرمی است.
+                کاربران می‌توانند بدون نیاز به خرید طلای فیزیکی، به‌اندازه بودجه خود طلا
+                بخرند و در هر زمان دلخواه، آن را بفروشند.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item glass reveal">
+            <button class="faq-q" type="button" aria-expanded="false">
+              چگونه می‌توانم طلای ۱۸ عیار بخرم؟
+              <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+            </button>
+            <div class="faq-a">
+              <p>
+                کافی است ثبت‌نام کنید، وارد حساب خود شوید، مبلغ دلخواه را مشخص کنید و بر اساس
+                قیمت لحظه‌ای طلای ۱۸ عیار، سفارش خرید خود را ثبت نمایید. میزان طلای خریداری‌شده
+                بلافاصله به حساب شما اضافه می‌شود.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item glass reveal">
+            <button class="faq-q" type="button" aria-expanded="false">
+              آیا امکان فروش طلا وجود دارد؟
+              <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+            </button>
+            <div class="faq-a">
+              <p>
+                بله. در هر ساعت از شبانه‌روز می‌توانید تمام یا بخشی از طلای خود را بر اساس
+                قیمت لحظه‌ای بفروشید و ارزش آن را نقد کنید. فروش به‌صورت کامل آنلاین انجام می‌شود.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item glass reveal">
+            <button class="faq-q" type="button" aria-expanded="false">
+              قیمت طلا چگونه محاسبه می‌شود؟
+              <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+            </button>
+            <div class="faq-a">
+              <p>
+                قیمت هر گرم طلای ۱۸ عیار به‌صورت لحظه‌ای و بر مبنای نرخ روز بازار محاسبه
+                می‌شود. تمام خرید و فروش‌ها دقیقاً بر مبنای همین نرخ شفاف انجام می‌گیرد و
+                هزینه پنهانی وجود ندارد.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item glass reveal">
+            <button class="faq-q" type="button" aria-expanded="false">
+              آیا امکان خرید با مبالغ کم وجود دارد؟
+              <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+            </button>
+            <div class="faq-a">
+              <p>
+                بله. از آنجا که طلا به‌صورت گرمی معامله می‌شود، می‌توانید با هر میزان بودجه
+                که دارید، حتی مقدار کم، سرمایه‌گذاری در طلا را آغاز کنید.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item glass reveal">
+            <button class="faq-q" type="button" aria-expanded="false">
+              دارایی من چگونه نگهداری می‌شود؟
+              <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+            </button>
+            <div class="faq-a">
+              <p>
+                دارایی طلایی شما به‌صورت مستند و قابل پیگیری در حساب کاربری‌تان ثبت می‌شود.
+                تاریخچه کامل خرید و فروش همیشه در دسترس شماست و شفافیت کامل در محاسبات رعایت می‌گردد.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item glass reveal">
+            <button class="faq-q" type="button" aria-expanded="false">
+              چگونه با پشتیبانی ارتباط برقرار کنم؟
+              <span class="chev" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+            </button>
+            <div class="faq-a">
+              <p>
+                تیم پشتیبانی طلا با ما به‌صورت ۲۴ ساعته و در ۷ روز هفته از طریق تلگرام
+                (<strong dir="ltr">@talabama</strong>) آماده پاسخگویی به سوالات شماست.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         Support
+         ========================================================== -->
+    <section class="section support-section" id="support">
+      <div class="container">
+        <div class="support-card glass reveal">
+          <span class="support-icon" aria-hidden="true"><i data-lucide="headset"></i></span>
+          <h2>ما همیشه <span class="gold-text">کنار شما</span> هستیم!</h2>
+          <p>
+            هر ساعت از شبانه‌روز سوالی داشتی یا به راهنمایی نیاز داشتی،
+            تیم پشتیبانی طلا با ما آماده پاسخگویی به توست.
+          </p>
+          <div><span class="support-24">
+            <i data-lucide="clock-4" aria-hidden="true"></i>
+            پشتیبانی ۲۴ ساعته در ۷ روز هفته
+          </span></div>
+          <div><span class="tg-id" dir="ltr">
+            <i data-lucide="send" aria-hidden="true"></i>
+            @talabama
+          </span></div>
+          <a href="https://t.me/talabama" target="_blank" rel="noopener noreferrer" class="btn btn-telegram">
+            <i data-lucide="send" aria-hidden="true"></i>
+            ارتباط با پشتیبانی در تلگرام
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================
+       Footer
+       ========================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-about">
+          <a href="#hero" class="logo" aria-label="طلا با ما">
+            <span class="logo-badge" aria-hidden="true"><i data-lucide="coins"></i></span>
+            <span class="logo-text">
+              طلا با ما
+              <span class="logo-sub">TALA BA MA</span>
+            </span>
+          </a>
+          <p>
+            پلتفرم آنلاین خرید و فروش طلای ۱۸ عیار؛ سرمایه‌گذاری در طلا را
+            برای همه ساده، سریع و شفاف می‌کنیم.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>دسترسی سریع</h4>
+          <ul>
+            <li><a href="#hero">صفحه اصلی</a></li>
+            <li><a href="#price">قیمت لحظه‌ای</a></li>
+            <li><a href="#chart">نمودار قیمت</a></li>
+            <li><a href="#faq">سوالات متداول</a></li>
+            <li><a href="#about">درباره ما</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>خرید و فروش</h4>
+          <ul>
+            <li><a href="#trade">خرید طلای ۱۸ عیار</a></li>
+            <li><a href="#trade">فروش طلای ۱۸ عیار</a></li>
+            <li><a href="#features">مزایای طلا با ما</a></li>
+            <li><a href="#stats">آمار و ارقام</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>پشتیبانی</h4>
+          <ul class="footer-support">
+            <li>
+              <i data-lucide="clock-4" aria-hidden="true"></i>
+              پشتیبانی ۲۴ ساعته، ۷ روز هفته
+            </li>
+            <li>
+              <i data-lucide="send" aria-hidden="true"></i>
+              تلگرام:
+              <a href="https://t.me/talabama" target="_blank" rel="noopener noreferrer" class="tg-link">@talabama</a>
+            </li>
+            <li>
+              <i data-lucide="message-circle" aria-hidden="true"></i>
+              پاسخگویی سریع به سوالات شما
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>تمام حقوق این وب‌سایت متعلق به <strong style="color:var(--gold-light)">طلا با ما</strong> است.</span>
+        <span>قیمت‌های نمایشی، جایگزین قیمت واقعی بازار نیستند.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  'use strict';
+
+  /* ============================================================
+     Gold Landing Page — Vanilla JS
+     ماژول‌ها:
+       1) Utils
+       2) Icons
+       3) Particles
+       4) Header & Mobile Menu
+       5) Smooth active nav
+       6) Price Engine (Mock + آماده اتصال به API واقعی)
+       7) Chart Manager (Chart.js)
+       8) Reveal on Scroll
+       9) Counters
+      10) FAQ Accordion
+      11) CTA / Buttons
+  ============================================================ */
+
+  /* ------------------------------------------------------------
+     1) Utils
+  ------------------------------------------------------------ */
+  const Utils = {
+    faDigits(str){
+      return String(str).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+    },
+    formatNumber(n, frac = 0){
+      try{
+        return new Intl.NumberFormat('fa-IR', {
+          minimumFractionDigits: frac,
+          maximumFractionDigits: frac
+        }).format(n);
+      }catch(e){
+        return this.faDigits(Number(n).toLocaleString('en-US'));
+      }
+    },
+    formatTime(date){
+      try{
+        return new Intl.DateTimeFormat('fa-IR', {
+          hour: '2-digit', minute: '2-digit', second: '2-digit'
+        }).format(date);
+      }catch(e){
+        const p = x => this.faDigits(String(x).padStart(2,'0'));
+        return `${p(date.getHours())}:${p(date.getMinutes())}:${p(date.getSeconds())}`;
+      }
+    },
+    clamp(v, min, max){ return Math.min(max, Math.max(min, v)); },
+    rand(min, max){ return min + Math.random() * (max - min); },
+    prefersReducedMotion(){
+      return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+  };
+
+  /* ------------------------------------------------------------
+     2) Icons (Lucide)
+  ------------------------------------------------------------ */
+  function initIcons(){
+    if (window.lucide && typeof window.lucide.createIcons === 'function'){
+      window.lucide.createIcons();
+    }
+  }
+  // به‌روزرسانی آیکون‌ها بعد از لود اسکریپت خارجی (defer)
+  window.addEventListener('DOMContentLoaded', initIcons);
+  window.addEventListener('load', initIcons);
+
+  /* ------------------------------------------------------------
+     3) Floating Gold Particles (Canvas)
+  ------------------------------------------------------------ */
+  function initParticles(){
+    const canvas = document.getElementById('goldParticles');
+    if (!canvas || Utils.prefersReducedMotion()) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let particles = [];
+    let rafId = null;
+    const DPR = Math.min(window.devicePixelRatio || 1, 2);
+
+    function resize(){
+      const hero = canvas.parentElement;
+      canvas.width = hero.offsetWidth * DPR;
+      canvas.height = hero.offsetHeight * DPR;
+      canvas.style.width = hero.offsetWidth + 'px';
+      canvas.style.height = hero.offsetHeight + 'px';
+      seed();
+    }
+
+    function seed(){
+      const area = (canvas.width / DPR) * (canvas.height / DPR);
+      const count = Utils.clamp(Math.round(area / 22000), 22, 60);
+      particles = Array.from({ length: count }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Utils.rand(1, 3) * DPR,
+        vy: -Utils.rand(.15, .5) * DPR,
+        vx: Utils.rand(-.12, .12) * DPR,
+        alpha: Utils.rand(.15, .6),
+        tw: Math.random() * Math.PI * 2
+      }));
+    }
+
+    function draw(){
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const p of particles){
+        p.y += p.vy;
+        p.x += p.vx;
+        p.tw += .03;
+        if (p.y < -10){ p.y = canvas.height + 10; p.x = Math.random() * canvas.width; }
+        if (p.x < -10) p.x = canvas.width + 10;
+        if (p.x > canvas.width + 10) p.x = -10;
+
+        const twinkle = .55 + Math.sin(p.tw) * .45;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(212, 175, 55, ${p.alpha * twinkle})`;
+        ctx.shadowColor = 'rgba(245, 215, 110, .8)';
+        ctx.shadowBlur = 6 * DPR;
+        ctx.fill();
+      }
+      ctx.shadowBlur = 0;
+      rafId = requestAnimationFrame(draw);
+    }
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(resize, 180);
+    });
+
+    // توقف انیمیشن وقتی Hero خارج از دید است (بهینه‌سازی)
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting){
+          if (!rafId) rafId = requestAnimationFrame(draw);
+        } else if (rafId){
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+      });
+    }, { threshold: 0 });
+    io.observe(canvas);
+
+    resize();
+  }
+
+  /* ------------------------------------------------------------
+     4) Header (Sticky) & Mobile Menu
+  ------------------------------------------------------------ */
+  function initHeader(){
+    const header = document.getElementById('siteHeader');
+    const onScroll = () => {
+      header.classList.toggle('scrolled', window.scrollY > 12);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  function initMobileMenu(){
+    const menu   = document.getElementById('mobileMenu');
+    const openBtn  = document.getElementById('hamburgerBtn');
+    const closeBtn = document.getElementById('mmClose');
+    const overlay  = document.getElementById('mmOverlay');
+
+    function open(){
+      menu.classList.add('open');
+      openBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function close(){
+      menu.classList.remove('open');
+      openBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    openBtn.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', close);
+
+    menu.querySelectorAll('.mm-nav a').forEach(a => a.addEventListener('click', close));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  }
+
+  /* ------------------------------------------------------------
+     5) Active Nav on Scroll
+  ------------------------------------------------------------ */
+  function initActiveNav(){
+    const links = Array.from(document.querySelectorAll('.main-nav a'));
+    const sections = ['hero', 'price', 'trade', 'about', 'support', 'faq']
+      .map(id => document.getElementById(id))
+      .filter(Boolean);
+
+    const map = { price: 'price', trade: 'trade', about: 'about', support: 'support', faq: 'support' };
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const id = map[entry.target.id] || entry.target.id;
+        links.forEach(l => l.classList.toggle('active', l.hash === `#${id}`));
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+
+    sections.forEach(s => io.observe(s));
+  }
+
+  /* ------------------------------------------------------------
+     6) Price Engine
+     معماری: لایه‌ی Provider مستقل از UI.
+     - حالت Mock: شبیه‌سازی Random Walk با داده‌ی نمایشی
+     - حالت API: کافی است CONFIG.api.fetch در آینده پیاده‌سازی شود
+  ------------------------------------------------------------ */
+  const PriceConfig = {
+    // ---- حالت نمایشی ----
+    useMock: true,
+    mockBase: 7_480_000,           // قیمت پایه هر گرم ۱۸ عیار (تومان) — فقط نمونه
+    mockVolatility: 0.0006,        // نوسان نسبی هر تیک
+    updateInterval: 5000,          // هر ۵ ثانیه یک به‌روزرسانی نمایشی
+
+    // ---- اتصال آینده به API واقعی ----
+    // کافی است useMock را false کنید و یکی از موارد زیر را تنظیم کنید:
+    api: {
+      endpoint: null,              // مثل: 'https://api.example.com/v1/gold/18k'
+      apiKey: null,                // در صورت نیاز (توصیه: نگهداری در سرور، نه فرانت‌اند)
+      // در صورت نیاز به تبدیل ساختار پاسخ API به ساختار Quote:
+      mapResponse: null            // مثل: (json) => ({ price: json.price_per_gram, ... })
+    }
+  };
+
+  const PriceEngine = (() => {
+    let currentQuote = null;
+    let timerId = null;
+    const listeners = new Set();
+
+    /* ساخت Quote نمایشی (Mock) — قیمت واقعی بازار نیست */
+    function makeMockQuote(prev){
+      let base = prev ? prev.price : PriceConfig.mockBase;
+      const drift = base * PriceConfig.mockVolatility * Utils.rand(-1, 1);
+      const price = Math.max(1, Math.round(base + drift));
+
+      const open = prev ? prev.open : Math.round(base * Utils.rand(.985, 1.015));
+      const changeAmount = price - open;
+      const changePercent = open ? (changeAmount / open) * 100 : 0;
+      const high = prev ? Math.max(prev.high, price) : price;
+      const low  = prev ? Math.min(prev.low, price)  : price;
+      const volume = prev ? prev.volume + (Math.random() < .35 ? Math.round(Utils.rand(1, 9)) : 0)
+                          : Math.round(Utils.rand(120, 420));
+
+      return {
+        price,
+        open,
+        high,
+        low,
+        volume,
+        changeAmount,
+        changePercent,
+        bullish: changeAmount >= 0,
+        updatedAt: new Date(),
+        isMock: true
+      };
+    }
+
+    /* Quote نمایشی برای نمودار (روند کلی بازه) */
+    function makeMockHistory(range, count, stepMs){
+      const now = Date.now();
+      const points = [];
+      let price = PriceConfig.mockBase * (range === '1y' ? .72 : range === '30d' ? .92 : .96);
+      for (let i = 0; i < count; i++){
+        const t = now - (count - 1 - i) * stepMs;
+        price *= 1 + Utils.rand(-PriceConfig.mockVolatility * 2.2, PriceConfig.mockVolatility * 2.6);
+        points.push({ t, price: Math.round(price) });
+      }
+      // هم‌تراز کردن انتهای سری با قیمت لحظه‌ای فعلی (اگر موجود باشد)
+      if (currentQuote){
+        const last = points[points.length - 1];
+        const diff = currentQuote.price - last.price;
+        points.forEach((p, i) => {
+          p.price = Math.round(p.price + diff * (i / (points.length - 1)));
+        });
+      }
+      return points;
+    }
+
+    /* دریافت Quote — در آینده از API واقعی */
+    async function fetchQuote(prev){
+      if (PriceConfig.useMock || !PriceConfig.api.endpoint){
+        return makeMockQuote(prev);
+      }
+      try{
+        const headers = PriceConfig.api.apiKey ? { 'Authorization': `Bearer ${PriceConfig.api.apiKey}` } : {};
+        const res = await fetch(PriceConfig.api.endpoint, { headers });
+        if (!res.ok) throw new Error('API response error: ' + res.status);
+        let json = await res.json();
+        if (typeof PriceConfig.api.mapResponse === 'function'){
+          json = PriceConfig.api.mapResponse(json);
+        }
+        // ساختار مورد انتظار: { price, open, high, low, volume, updatedAt }
+        return {
+          price: Number(json.price),
+          open: Number(json.open ?? json.price),
+          high: Number(json.high ?? json.price),
+          low: Number(json.low ?? json.price),
+          volume: Number(json.volume ?? 0),
+          bullish: (Number(json.price) - Number(json.open ?? json.price)) >= 0,
+          updatedAt: json.updatedAt ? new Date(json.updatedAt) : new Date(),
+          isMock: false
+        };
+      }catch(err){
+        console.warn('خطا در دریافت قیمت از API؛ استفاده از داده‌ی نمایشی:', err);
+        return makeMockQuote(prev);
+      }
+    }
+
+    async function tick(){
+      const quote = await fetchQuote(currentQuote);
+      currentQuote = quote;
+      listeners.forEach(fn => { try{ fn(quote); }catch(e){ console.error(e); } });
+    }
+
+    return {
+      start(){
+        if (timerId) return;
+        tick();
+        timerId = setInterval(tick, PriceConfig.updateInterval);
+      },
+      stop(){
+        clearInterval(timerId);
+        timerId = null;
+      },
+      getQuote(){ return currentQuote; },
+      subscribe(fn){ listeners.add(fn); return () => listeners.delete(fn); },
+      /* دسترس‌پذیر برای ChartManager */
+      getHistory(range, count, stepMs){
+        return makeMockHistory(range, count, stepMs);
+      }
+    };
+  })();
+
+  /* UI رندر قیمت */
+  function initLivePrice(){
+    const el = {
+      value:    document.getElementById('priceValue'),
+      number:   document.getElementById('priceNumber'),
+      updated:  document.getElementById('priceUpdatedAt'),
+      chip:     document.getElementById('changeChip'),
+      chipIcon: () => el.chip && el.chip.querySelector('svg, i'),
+      percent:  document.getElementById('changePercent'),
+      amount:   document.getElementById('changeAmount'),
+      trend:    document.getElementById('trendTag'),
+      trendDesc:document.getElementById('trendDesc'),
+      high:     document.getElementById('dayHigh'),
+      low:      document.getElementById('dayLow'),
+      open:     document.getElementById('dayOpen'),
+      volume:   document.getElementById('dayVolume')
+    };
+
+    function renderTrend(bullish){
+      el.trend.classList.toggle('bullish', bullish);
+      el.trend.classList.toggle('bearish', !bullish);
+      el.trend.innerHTML = bullish
+        ? '<i data-lucide="trending-up" aria-hidden="true"></i> صعودی'
+        : '<i data-lucide="trending-down" aria-hidden="true"></i> نزولی';
+      el.trendDesc.textContent = bullish
+        ? 'بازار طلا در حالت صعودی قرار دارد.'
+        : 'بازار طلا در حالت نزولی قرار دارد.';
+    }
+
+    function renderChip(bullish, percent){
+      el.chip.classList.toggle('up', bullish);
+      el.chip.classList.toggle('down', !bullish);
+      el.chip.innerHTML = (bullish
+          ? '<i data-lucide="arrow-up-right" aria-hidden="true"></i>'
+          : '<i data-lucide="arrow-down-right" aria-hidden="true"></i>')
+        + `<span class="num">${Utils.formatNumber(Math.abs(percent), 2)}٪</span>`;
+    }
+
+    function render(q, prev){
+      // قیمت اصلی
+      el.number.textContent = Utils.formatNumber(q.price);
+      el.value.classList.remove('up', 'down');
+      el.value.classList.add(q.bullish ? 'up' : 'down');
+
+      // انیمیشن فلش هنگام تغییر
+      if (prev && prev.price !== q.price){
+        const cls = q.price > prev.price ? 'flash-up' : 'flash-down';
+        el.value.classList.remove('flash-up', 'flash-down');
+        void el.value.offsetWidth; // reflow برای restart انیمیشن
+        el.value.classList.add(cls);
+      }
+
+      // متادیتا
+      el.updated.textContent = Utils.formatTime(q.updatedAt);
+      renderChip(q.bullish, q.changePercent);
+      el.amount.textContent =
+        (q.changeAmount >= 0 ? '▲ ' : '▼ ') + Utils.formatNumber(Math.abs(q.changeAmount)) + ' تومان';
+      el.amount.style.color = q.bullish ? 'var(--green)' : 'var(--red)';
+
+      renderTrend(q.bullish);
+
+      // آمار روز
+      el.high.textContent   = Utils.formatNumber(q.high);
+      el.low.textContent    = Utils.formatNumber(q.low);
+      el.open.textContent   = Utils.formatNumber(q.open);
+      el.volume.textContent = Utils.formatNumber(q.volume);
+
+      initIcons(); // رندر آیکون‌های تازه‌ساخته‌شده
+    }
+
+    let prev = null;
+    PriceEngine.subscribe(q => { render(q, prev); prev = q; });
+    PriceEngine.start();
+  }
+
+  /* ------------------------------------------------------------
+     7) Chart Manager (Chart.js)
+  ------------------------------------------------------------ */
+  function initChart(){
+    const canvas = document.getElementById('goldChart');
+    if (!canvas || !window.Chart){
+      // اگر Chart.js لود نشد، جایگزین متنی
+      if (canvas){
+        canvas.replaceWith(Object.assign(document.createElement('p'), {
+          textContent: 'برای نمایش نمودار، اتصال به اینترنت (CDN) لازم است.',
+          style: 'color:var(--text-faint);text-align:center;padding:2rem;'
+        }));
+      }
+      return;
+    }
+
+    const ctx = canvas.getContext('2d');
+    Chart.defaults.font.family = "'Vazirmatn', 'Sahel', sans-serif";
+    Chart.defaults.font.size = 12;
+
+    const RANGES = {
+      '1h' : { count: 60, stepMs: 60 * 1000,            label: () => fmtTime },
+      '24h': { count: 48, stepMs: 30 * 60 * 1000,       label: () => fmtTime },
+      '7d' : { count: 56, stepMs: 3 * 60 * 60 * 1000,   label: () => fmtDayHour },
+      '30d': { count: 30, stepMs: 24 * 60 * 60 * 1000,  label: () => fmtDate },
+      '1y' : { count: 52, stepMs: 7 * 24 * 60 * 60 * 1000, label: () => fmtDate }
+    };
+
+    const faTime = new Intl.DateTimeFormat('fa-IR', { hour: '2-digit', minute: '2-digit' });
+    const faDate = new Intl.DateTimeFormat('fa-IR', { month: 'short', day: 'numeric' });
+    const faDateFull = new Intl.DateTimeFormat('fa-IR', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+
+    const fmtTime = t => faTime.format(t);
+    const fmtDate = t => faDate.format(t);
+    const fmtDayHour = t => faDate.format(t) + ' - ' + faTime.format(t);
+
+    const MONTH_TOOLTIP = t => faDateFull.format(t);
+
+    let chart = null;
+    let currentRange = '24h';
+
+    const gradient = () => {
+      const g = ctx.createLinearGradient(0, 0, 0, canvas.height || 380);
+      g.addColorStop(0, 'rgba(212, 175, 55, .38)');
+      g.addColorStop(.55, 'rgba(212, 175, 55, .08)');
+      g.addColorStop(1, 'rgba(212, 175, 55, 0)');
+      return g;
+    };
+
+    function build(rangeKey){
+      const cfg = RANGES[rangeKey];
+      const data = PriceEngine.getHistory(rangeKey, cfg.count, cfg.stepMs);
+      const labels = data.map(p => cfg.label()(p.t));
+
+      const values = data.map(p => p.price);
+      const min = Math.min(...values);
+      const max = Math.max(...values);
+      const pad = (max - min) * .18 || max * .002;
+
+      if (chart){
+        chart.data.labels = labels;
+        chart.data.datasets[0].data = values;
+        chart.options.scales.y.min = min - pad;
+        chart.options.scales.y.max = max + pad;
+        chart.update();
+        return;
+      }
+
+      chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [{
+            label: 'قیمت هر گرم طلای ۱۸ عیار',
+            data: values,
+            borderColor: '#D4AF37',
+            borderWidth: 2.5,
+            backgroundColor: gradient(),
+            fill: true,
+            tension: .35,
+            pointRadius: 0,
+            pointHoverRadius: 6,
+            pointHoverBackgroundColor: '#F5D76E',
+            pointHoverBorderColor: '#0B0B0D',
+            pointHoverBorderWidth: 3
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: { duration: Utils.prefersReducedMotion() ? 0 : 750, easing: 'easeOutQuart' },
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              rtl: true,
+              backgroundColor: 'rgba(11, 11, 13, .94)',
+              borderColor: 'rgba(212, 175, 55, .45)',
+              borderWidth: 1,
+              titleColor: '#F5D76E',
+              bodyColor: '#FAF8F0',
+              padding: 12,
+              cornerRadius: 10,
+              displayColors: false,
+              callbacks: {
+                title: items => MONTH_TOOLTIP(data[items[0].dataIndex].t),
+                label: item =>
+                  'قیمت: ' + Utils.formatNumber(item.parsed.y) + ' تومان'
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              border: { color: 'rgba(212,175,55,.2)' },
+              ticks: {
+                color: 'rgba(250,248,240,.45)',
+                maxTicksLimit: 8,
+                maxRotation: 0,
+                autoSkip: true
+              }
+            },
+            y: {
+              min: min - pad,
+              max: max + pad,
+              grid: { color: 'rgba(212,175,55,.08)' },
+              border: { display: false },
+              ticks: {
+                color: 'rgba(250,248,240,.55)',
+                callback: v => Utils.formatNumber(v)
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // فیلترهای بازه‌ی زمانی
+    document.querySelectorAll('.range-filters button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.range-filters button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentRange = btn.dataset.range;
+        build(currentRange);
+      });
+    });
+
+    build(currentRange);
+
+    // به‌روزرسانی نمایشی هر ۱۰ ثانیه (هم‌گام با موتور قیمت)
+    setInterval(() => {
+      if (chart) build(currentRange);
+    }, 10000);
+  }
+
+  /* ------------------------------------------------------------
+     8) Reveal on Scroll
+  ------------------------------------------------------------ */
+  function initReveal(){
+    const items = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)){
+      items.forEach(el => el.classList.add('visible'));
+      return;
+    }
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting){
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(el => io.observe(el));
+  }
+
+  /* ------------------------------------------------------------
+     9) Counters (Count Up Animation)
+  ------------------------------------------------------------ */
+  function initCounters(){
+    const counters = document.querySelectorAll('.counter');
+    if (!counters.length) return;
+
+    const animate = el => {
+      const target = Number(el.dataset.target || 0);
+      if (Utils.prefersReducedMotion()){
+        el.textContent = Utils.formatNumber(target);
+        return;
+      }
+      const duration = 2000;
+      const start = performance.now();
+      const easeOut = t => 1 - Math.pow(1 - t, 3);
+      function frame(now){
+        const p = Utils.clamp((now - start) / duration, 0, 1);
+        el.textContent = Utils.formatNumber(Math.round(target * easeOut(p)));
+        if (p < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    };
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting){
+          animate(entry.target);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .4 });
+    counters.forEach(el => io.observe(el));
+  }
+
+  /* ------------------------------------------------------------
+     10) FAQ Accordion
+  ------------------------------------------------------------ */
+  function initFaq(){
+    const items = document.querySelectorAll('.faq-item');
+    items.forEach(item => {
+      const btn = item.querySelector('.faq-q');
+      const panel = item.querySelector('.faq-a');
+      btn.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+
+        // بستن بقیه (آکاردئونی تک‌باز)
+        items.forEach(other => {
+          if (other === item) return;
+          other.classList.remove('open');
+          other.querySelector('.faq-a').style.maxHeight = '';
+          other.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+        });
+
+        if (isOpen){
+          item.classList.remove('open');
+          panel.style.maxHeight = '';
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          item.classList.add('open');
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // باز شدن اولین سوال به‌صورت پیش‌فرض
+    const first = items[0];
+    if (first){
+      first.classList.add('open');
+      first.querySelector('.faq-a').style.maxHeight = first.querySelector('.faq-a').scrollHeight + 'px';
+      first.querySelector('.faq-q').setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  /* ------------------------------------------------------------
+     11) CTA Buttons
+     دکمه‌های «شروع سرمایه‌گذاری» و «ورود/ثبت‌نام» به‌صورت نمایشی
+     کاربر را به بخش خرید هدایت می‌کنند (در نسخه‌ی محصول به صفحات
+     ثبت‌نام/پنل متصل می‌شود).
+  ------------------------------------------------------------ */
+  function initCtaButtons(){
+    const goTrade = () => {
+      document.getElementById('trade')?.scrollIntoView({ behavior: 'smooth' });
+    };
+    ['loginBtn', 'startBtn', 'mmLoginBtn', 'mmStartBtn'].forEach(id => {
+      document.getElementById(id)?.addEventListener('click', goTrade);
+    });
+    document.querySelectorAll('.js-start-buy, .js-start-sell').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.getElementById('support')?.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  }
+
+  /* ------------------------------------------------------------
+     Bootstrap
+  ------------------------------------------------------------ */
+  document.addEventListener('DOMContentLoaded', () => {
+    initHeader();
+    initMobileMenu();
+    initActiveNav();
+    initParticles();
+    initLivePrice();
+    initReveal();
+    initCounters();
+    initFaq();
+    initCtaButtons();
+
+    // نمودار باید بعد از لود Chart.js ساخته شود
+    if (window.Chart){
+      initChart();
+    } else {
+      window.addEventListener('load', () => { if (window.Chart) initChart(); });
+    }
+  });
+  </script>
+</body>
+</html>
